@@ -13,6 +13,18 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      animation: {
+        wiggle: "wiggle 0.5s infinite",
+      },
+      keyframes: {
+        wiggle: {
+          "0%": { transform: "rotate(var(--initial-deg))" },
+          "25%": { transform: "rotate(var(--initial-deg)-3deg)" },
+          "50%": { transform: "rotate(var(--initial-deg)+3deg)" },
+          "75%": { transform: "rotate(var(--initial-deg)-3deg)" },
+          "100%": { transform: "rotate(var(--initial-deg))" },
+        },
+      },
     },
   },
   plugins: [],
