@@ -15,7 +15,7 @@ export default function NavBar() {
             passHref
             target="_blank"
           >
-            <Image src={Instagram} alt="instagram" width={45} height={45} />
+            <Image src={Instagram} alt="instagram" width={40} height={40} />
           </Link>
         </div>
       </div>

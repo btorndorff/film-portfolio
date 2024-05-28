@@ -11,7 +11,7 @@ export async function GET() {
   try {
     const { resources } = await cloudinary.v2.api.resources({
       type: "upload",
-      prefix: "film-portfolio",
+      prefix: "film-website",
       max_results: 100,
       image_metadata: true,
     });

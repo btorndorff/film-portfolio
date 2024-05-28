@@ -6,6 +6,14 @@ import Image from "../types/Image";
 
 const BACKEND_URL = "/api/images";
 
+function shuffleArray(array: any[]) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 export const useFetchImages = () => {
   const [images, setImages] = useState<Image[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -24,7 +32,7 @@ export const useFetchImages = () => {
           src: image.url,
           url: undefined,
         }));
-        setImages(processedImages);
+        setImages(shuffleArray(processedImages));
       } catch (err: any) {
         setError(err.message);
       } finally {

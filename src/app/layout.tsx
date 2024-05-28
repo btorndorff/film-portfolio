@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "BORF.FILM",
   description: "All photos taken within my proximity",
   icons: {
-    icon: "/icons/camera.ico",
+    icon: "/icons/fishman.svg",
   },
 };
 
