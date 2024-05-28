@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 export interface Image {
   url: string;
@@ -7,7 +8,7 @@ export interface Image {
   public_id: string;
 }
 
-const BACKEND_URL = "http://127.0.0.1:5000";
+const BACKEND_URL = "/api/images"; // Use the Next.js API route
 
 export const useFetchImages = () => {
   const [images, setImages] = useState<Image[]>([]);
@@ -17,11 +18,11 @@ export const useFetchImages = () => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await fetch(`${BACKEND_URL}/images`);
-        if (!response.ok) {
+        const response = await axios.get(BACKEND_URL);
+        if (response.status !== 200) {
           throw new Error("Failed to fetch images");
         }
-        const data = await response.json();
+        const data = response.data;
         setImages(data.images);
       } catch (err: any) {
         setError(err.message);

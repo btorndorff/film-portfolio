@@ -26,8 +26,11 @@ export default function Photos() {
   }));
 
   return (
-    <main className="p-24">
-      <NavBar />
+    <main className="p-24 pt-10">
+      <div className="mb-10">
+        <NavBar />
+      </div>
+
       <PhotoGallery photos={photos} />
     </main>
   );

@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.cdnfonts.com/css/hvdtrial-brandon-grotesque");
+
 :root {
   --background-color: #fff6ef;
   --initial-deg: 0deg;
@@ -9,6 +11,7 @@
 
 body {
   background-color: var(--background-color);
+  font-family: "Brandon Grotesque", sans-serif;
 }
 
 @layer utilities {

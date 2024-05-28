@@ -34,7 +34,8 @@ export default function PhotoGallery({ photos }: { photos: photo[] }) {
     <div>
       <PhotoAlbum
         photos={images}
-        layout="rows"
+        layout="masonry"
+        columns={2}
         renderPhoto={NextJsImage}
         defaultContainerWidth={1200}
         sizes={{
