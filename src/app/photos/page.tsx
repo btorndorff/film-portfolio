@@ -26,7 +26,7 @@ export default function Photos() {
   }));
 
   return (
-    <main className="p-24 pt-10">
+    <main className="p-6 md:p-24 pt-10">
       <div className="mb-10">
         <NavBar />
       </div>

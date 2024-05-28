@@ -27,7 +27,10 @@ export default function PhotoGallery({ photos }: { photos: Photo[] }) {
       <PhotoAlbum
         photos={images}
         layout="masonry"
-        columns={2}
+        columns={(containerWidth) => {
+          if (containerWidth < 768) return 1;
+          return 2;
+        }}
         renderPhoto={(props) => (
           <NextJsImage
             {...props}
@@ -35,14 +38,6 @@ export default function PhotoGallery({ photos }: { photos: Photo[] }) {
           />
         )}
         defaultContainerWidth={1200}
-        sizes={{
-          size: "calc(100vw - 40px)",
-          sizes: [
-            { viewport: "(max-width: 299px)", size: "calc(100vw - 10px)" },
-            { viewport: "(max-width: 599px)", size: "calc(100vw - 20px)" },
-            { viewport: "(max-width: 1199px)", size: "calc(100vw - 30px)" },
-          ],
-        }}
       />
 
       <Lightbox

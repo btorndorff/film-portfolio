@@ -5,21 +5,20 @@ import Camera from "../../../public/icons/camera.svg";
 
 export default function NavBar() {
   return (
-    <nav>
-      <div className="container mx-auto flex justify-between items-center ">
+    <nav className="py-4">
+      <div className="container mx-auto flex flex-col items-center md:flex-row md:justify-between md:gap-3">
         <Link href="/" passHref>
-          <Image src={Camera} alt="camera" width={45} />
+          <span className="text-4xl font-bold mb-6 md:mb-0">BEN ORNDORFF</span>
         </Link>
-        <Link href="/" passHref>
-          <span className="text-4xl font-bold">BEN ORNDORFF</span>
-        </Link>
-        <Link
-          href="https://www.instagram.com/borf.film/"
-          passHref
-          target="_blank"
-        >
-          <Image src={Instagram} alt="instagram" width={45} />
-        </Link>
+        <div className="flex items-center space-x-4 mt-6 md:mt-0">
+          <Link
+            href="https://www.instagram.com/borf.film/"
+            passHref
+            target="_blank"
+          >
+            <Image src={Instagram} alt="instagram" width={45} height={45} />
+          </Link>
+        </div>
       </div>
     </nav>
   );
