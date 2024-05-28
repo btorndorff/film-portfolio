@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { useSound } from "use-sound";
+import useSound from "use-sound";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import PhotoBackground from "../../../public/images/photo-background.png";

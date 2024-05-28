@@ -1,16 +1,18 @@
 import Image from "next/image";
-import type { RenderPhotoProps } from "react-photo-album";
+import type { RenderPhotoProps, Photo } from "react-photo-album";
+
+interface ExtendedRenderPhotoProps extends RenderPhotoProps {
+  onClick?: () => void;
+}
 
 export default function NextJsImage({
   photo,
-  imageProps: { alt, title, sizes, className, onClick },
+  imageProps: { alt, title, sizes, className },
   wrapperStyle,
-}: RenderPhotoProps) {
+  onClick,
+}: ExtendedRenderPhotoProps) {
   return (
-    <div
-      style={{ ...wrapperStyle, position: "relative" }}
-      onClick={photo.onClick}
-    >
+    <div style={{ ...wrapperStyle, position: "relative" }} onClick={onClick}>
       <Image
         fill
         src={photo}

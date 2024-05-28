@@ -3,25 +3,17 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import NextJsImage from "./NextJsImage";
 import { useState } from "react";
+import type { Photo } from "react-photo-album";
 
-type photo = {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-  onClick?: () => void;
-};
-
-export default function PhotoGallery({ photos }: { photos: photo[] }) {
+export default function PhotoGallery({ photos }: { photos: Photo[] }) {
   const [open, setOpen] = useState(false);
-  const [lightboxPhoto, setLightboxPhoto] = useState<photo>();
+  const [lightboxPhoto, setLightboxPhoto] = useState<Photo>();
 
   const images = photos.map((photo) => ({
     ...photo,
-    onClick: () => handleImageClick(photo),
   }));
 
-  const handleImageClick = (clickedPhoto: photo) => {
+  const handleImageClick = (clickedPhoto: Photo) => {
     setLightboxPhoto(clickedPhoto);
     setOpen(true);
   };
@@ -36,7 +28,12 @@ export default function PhotoGallery({ photos }: { photos: photo[] }) {
         photos={images}
         layout="masonry"
         columns={2}
-        renderPhoto={NextJsImage}
+        renderPhoto={(props) => (
+          <NextJsImage
+            {...props}
+            onClick={() => handleImageClick(props.photo)}
+          />
+        )}
         defaultContainerWidth={1200}
         sizes={{
           size: "calc(100vw - 40px)",
