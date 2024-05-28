@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import Instagram from "../../../public/icons/instagram.svg";
-import Camera from "../../../public/icons/camera.svg";
 
 export default function NavBar() {
   return (

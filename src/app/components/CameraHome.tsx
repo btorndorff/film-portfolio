@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import useSound from "use-sound";
 import Image from "next/image";
 import { useRouter } from "next/navigation";

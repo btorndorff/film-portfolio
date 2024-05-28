@@ -1,14 +1,10 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Image from "../types/Image";
 
-export interface Image {
-  url: string;
-  width: number;
-  height: number;
-  public_id: string;
-}
-
-const BACKEND_URL = "/api/images"; // Use the Next.js API route
+const BACKEND_URL = "/api/images";
 
 export const useFetchImages = () => {
   const [images, setImages] = useState<Image[]>([]);
@@ -23,7 +19,12 @@ export const useFetchImages = () => {
           throw new Error("Failed to fetch images");
         }
         const data = response.data;
-        setImages(data.images);
+        const processedImages = data.images.map((image: any) => ({
+          ...image,
+          src: image.url,
+          url: undefined,
+        }));
+        setImages(processedImages);
       } catch (err: any) {
         setError(err.message);
       } finally {

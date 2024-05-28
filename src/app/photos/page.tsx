@@ -2,15 +2,7 @@
 
 import NavBar from "../components/NavBar";
 import PhotoGallery from "../components/PhotoGallery";
-import { useFetchImages, Image } from "../hooks/useFetchImages";
-
-type photo = {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-  onClick?: () => void;
-};
+import { useFetchImages } from "../hooks/useFetchImages";
 
 export default function Photos() {
   const { images, loading, error } = useFetchImages();
@@ -18,20 +10,13 @@ export default function Photos() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
-  const photos: photo[] = images.map((image: Image) => ({
-    src: image.url,
-    alt: image.public_id,
-    width: image.width,
-    height: image.height,
-  }));
-
   return (
     <main className="p-6 md:p-24 pt-10">
       <div className="mb-10">
         <NavBar />
       </div>
 
-      <PhotoGallery photos={photos} />
+      <PhotoGallery images={images} />
     </main>
   );
 }

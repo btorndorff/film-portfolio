@@ -1,17 +1,16 @@
+"use client";
+
 import { PhotoAlbum } from "react-photo-album";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import NextJsImage from "./NextJsImage";
 import { useState } from "react";
 import type { Photo } from "react-photo-album";
+import Image from "../types/Image";
 
-export default function PhotoGallery({ photos }: { photos: Photo[] }) {
+export default function PhotoGallery({ images }: { images: Image[] }) {
   const [open, setOpen] = useState(false);
   const [lightboxPhoto, setLightboxPhoto] = useState<Photo>();
-
-  const images = photos.map((photo) => ({
-    ...photo,
-  }));
 
   const handleImageClick = (clickedPhoto: Photo) => {
     setLightboxPhoto(clickedPhoto);
@@ -35,6 +34,7 @@ export default function PhotoGallery({ photos }: { photos: Photo[] }) {
           <NextJsImage
             {...props}
             onClick={() => handleImageClick(props.photo)}
+            metadata={props.photo.metadata}
           />
         )}
         defaultContainerWidth={1200}

@@ -13,6 +13,7 @@ export async function GET() {
       type: "upload",
       prefix: "film-portfolio",
       max_results: 100,
+      image_metadata: true,
     });
 
     const images = resources.map((image: any) => ({
@@ -20,6 +21,7 @@ export async function GET() {
       width: image.width,
       height: image.height,
       public_id: image.public_id,
+      metadata: image.metadata,
     }));
 
     return NextResponse.json({ images });
