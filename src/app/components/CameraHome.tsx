@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import PhotoBackground from "../../../public/images/photo-background.png";
 import useFetchCamera from "../hooks/useFetchCamera";
 import Camera from "../types/camera";
+import Error from "../components/Error";
 
 const CameraDisplay = ({ camera }: { camera: Camera }) => {
   const router = useRouter();
@@ -35,14 +36,10 @@ const CameraDisplay = ({ camera }: { camera: Camera }) => {
 export default function CameraHome() {
   const camera = useFetchCamera();
 
-  if (!camera) {
-    return <p>Loading camera data...</p>;
-  }
-
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
       <div className="z-10 absolute">
-        <CameraDisplay camera={camera} />
+        {camera ? <CameraDisplay camera={camera} /> : <Error />}
       </div>
 
       <Image
